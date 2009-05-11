@@ -3,3 +3,47 @@
   [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
   [4;35;1mSQL (88.8ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
   [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (179.0ms)[0m   [0;1mCREATE TABLE "topics" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511164241')[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateThemes (20090511171151)
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (111.3ms)[0m   [0;1mCREATE TABLE "themes" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511171151')[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (130.8ms)[0m   [0;1mCREATE TABLE "references" ("id" serial primary key, "ref" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511171337')[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (138.6ms)[0m   [0;1mCREATE TABLE "themes_references" ("id" serial primary key, "theme_id" int, "reference_id" int, "quality" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (41.6ms)[0m   [0mCREATE INDEX "index_themes_references_on_theme_id" ON "themes_references" ("theme_id")[0m
+  [4;36;1mSQL (34.1ms)[0m   [0;1mCREATE INDEX "index_themes_references_on_reference_id" ON "themes_references" ("reference_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511171840')[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateTopicsThemes (20090511172101)
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (114.6ms)[0m   [0;1mCREATE TABLE "topics_themes" ("id" serial primary key, "topic_id" int, "theme_id" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511172101')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
