@@ -1,0 +1,23 @@
+<div id="topic-listing">
+<h1>Topics</h1>
+
+<table cellpadding="5" cellspacing="0">
+<% for topic in @topics %>
+<tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+
+  <td>
+    <span class="list-name"><%= h(topic.name) %></span><br />
+    <%= h(truncate(topic.description, 80)) %>
+  </td>
+
+  <td class="list-actions">
+    <%= link_to 'Show', topic %>
+    <%= link_to 'Edit', edit_topic_path(topic) %>
+    <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
+   </td>
+</tr>
+
+<% end %>
+</table>
+</div>
+<%= link_to 'New Topic', :action => 'new' %>

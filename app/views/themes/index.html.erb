@@ -1,0 +1,23 @@
+<div id="theme-listing">
+<h1>Themes</h1>
+
+<table cellpadding="5" cellspacing="0">
+<% for theme in @themes %>
+<tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+
+  <td>
+    <span class="list-name"><%= h(theme.name) %></span><br />
+    <%= h(truncate(theme.description, 80)) %>
+  </td>
+
+  <td class="list-actions">
+    <%= link_to 'Show', theme %>
+    <%= link_to 'Edit', edit_theme_path(theme) %>
+    <%= link_to 'Destroy', theme, :confirm => 'Are you sure?', :method => :delete %>
+   </td>
+</tr>
+
+<% end %>
+</table>
+</div>
+<%= link_to 'New Theme', :action => 'new' %>

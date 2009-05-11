@@ -56,3 +56,1494 @@ Migrating to CreateReferences (20090511171337)
 Migrating to CreateThemesReferences (20090511171840)
 Migrating to CreateTopicsThemes (20090511172101)
   [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (105.0ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (90.0ms)[0m   [0mCREATE TABLE "topics" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090511164241')[0m
+  [4;35;1mSQL (35.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateThemes (20090511171151)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (84.0ms)[0m   [0mCREATE TABLE "themes" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090511171151')[0m
+  [4;35;1mSQL (59.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateReferences (20090511171337)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mCREATE TABLE "references" ("id" serial primary key, "ref" character varying(255), "content" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090511171337')[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateThemesReferences (20090511171840)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (17.0ms)[0m   [0mCREATE TABLE "themes_references" ("id" serial primary key, "theme_id" int, "reference_id" int, "quality" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE INDEX "index_themes_references_on_theme_id" ON "themes_references" ("theme_id")[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mCREATE INDEX "index_themes_references_on_reference_id" ON "themes_references" ("reference_id")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090511171840')[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateTopicsThemes (20090511172101)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mCREATE TABLE "topics_themes" ("id" serial primary key, "topic_id" int, "theme_id" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_topics_themes_on_topic_id_and_theme_id" ON "topics_themes" ("topic_id", "theme_id")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511172101')[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 20:34:06) [GET]
+
+ActionController::RoutingError (No route matches "/topics" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 20:46:53) [GET]
+
+NameError (uninitialized constant TopicsController):
+  
+
+Rendered rescues/_trace (124.0ms)
+Rendered rescues/_request_and_response (4.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 20:48:26) [GET]
+
+ActionView::MissingTemplate (Missing template topics/index.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:07:15) [GET]
+Rendering template within layouts/application
+Rendering topics/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #5 of app/views/topics/index.html.erb:
+2: <h1>Topics</h1>
+3: 
+4: <table cellpadding="5" cellspacing="0">
+5: <% for topic in @topics %>
+6: <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+7: 
+8:   <td>
+
+    app/views/topics/index.html.erb:5
+
+Rendered rescues/_trace (161.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:07:55) [GET]
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+Completed in 79ms (View: 6, DB: 5) | 200 OK [http://stargazer/topics]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 21:07:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/exchange.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:10:46) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+Completed in 24ms (View: 11, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:11:08) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+Completed in 27ms (View: 12, DB: 8) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:11:08) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+Completed in 17ms (View: 3, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:14:29) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+Completed in 24ms (View: 11, DB: 8) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2009-05-11 21:14:31) [GET]
+
+ActionView::MissingTemplate (Missing template topics/new.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2009-05-11 21:17:18) [GET]
+Rendering template within layouts/application
+Rendering topics/new
+Rendered topics/_form (6.0ms)
+Completed in 3707ms (View: 3688, DB: 3) | 200 OK [http://stargazer/topics/new]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#create (for 127.0.0.1 at 2009-05-11 21:17:48) [POST]
+  Parameters: {"commit"=>"Record", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages"}}
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (24.0ms)[0m   [0;1mINSERT INTO "topics" ("name", "updated_at", "description", "created_at") VALUES(E'War', '2009-05-11 19:17:49.019000', E'Study of War passages', '2009-05-11 19:17:49.019000') RETURNING "id"[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://stargazer:3000/topics/1
+Completed in 179ms (DB: 42) | 302 Found [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:17:49) [GET]
+  Parameters: {"id"=>"1"}
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, edit, index, new, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:18:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template topics/show.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:19:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 38ms (View: 16, DB: 6) | 200 OK [http://stargazer/topics/1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:19:37) [GET]
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 29ms (View: 16, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#new (for 127.0.0.1 at 2009-05-11 21:19:40) [GET]
+Rendering template within layouts/application
+Rendering topics/new
+Rendered topics/_form (2.0ms)
+Completed in 25ms (View: 8, DB: 2) | 200 OK [http://stargazer/topics/new]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#create (for 127.0.0.1 at 2009-05-11 21:19:59) [POST]
+  Parameters: {"commit"=>"Record", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures"}}
+  [4;35;1mSQL (1.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mINSERT INTO "topics" ("name", "updated_at", "description", "created_at") VALUES(E'Charity', '2009-05-11 19:19:59.965000', E'Charity in the scriptures', '2009-05-11 19:19:59.965000') RETURNING "id"[0m
+  [4;35;1mSQL (23.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://stargazer:3000/topics/2
+Completed in 62ms (DB: 30) | 302 Found [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:20:00) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 28ms (View: 6, DB: 7) | 200 OK [http://stargazer/topics/2]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:20:02) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 31ms (View: 17, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:24:08) [GET]
+  [4;35;1mTopic Load (5.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 39ms (View: 25, DB: 9) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:24:10) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 31ms (View: 17, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:24:40) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 39ms (View: 25, DB: 6) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 21:24:48) [GET]
+
+LoadError (Expected D:/ruby18/www/ssa/app/controllers/themes_controller.rb to define ThemesController):
+  
+
+Rendered rescues/_trace (59.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:30:06) [GET]
+  [4;36;1mTopic Load (6.0ms)[0m   [0;1mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 37ms (View: 20, DB: 9) | 200 OK [http://stargazer/topics]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:30:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 27ms (View: 6, DB: 6) | 200 OK [http://stargazer/topics/1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 21:30:11) [GET]
+
+LoadError (Expected D:/ruby18/www/ssa/app/controllers/themes_controller.rb to define ThemesController):
+  
+
+Rendered rescues/_trace (59.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:30:24) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 32ms (View: 18, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:30:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 28ms (View: 6, DB: 6) | 200 OK [http://stargazer/topics/1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 21:30:56) [GET]
+
+LoadError (Expected D:/ruby18/www/ssa/app/controllers/themes_controller.rb to define ThemesController):
+  
+
+Rendered rescues/_trace (59.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 21:33:33) [GET]
+
+LoadError (Expected D:/ruby18/www/ssa/app/controllers/themes_controller.rb to define ThemesController):
+  
+
+Rendered rescues/_trace (59.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-11 21:34:08) [GET]
+
+LoadError (Expected D:/ruby18/www/ssa/app/controllers/themes_controller.rb to define ThemesController):
+  
+
+Rendered rescues/_trace (60.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#index (for 127.0.0.1 at 2009-05-11 21:34:40) [GET]
+Rendering template within layouts/application
+Rendering themes/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #5 of app/views/themes/index.html.erb:
+2: <h1>Themes</h1>
+3: 
+4: <table cellpadding="5" cellspacing="0">
+5: <% for theme in @themes %>
+6: <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+7: 
+8:   <td>
+
+    app/views/themes/index.html.erb:5
+
+Rendered rescues/_trace (84.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#index (for 127.0.0.1 at 2009-05-11 21:36:26) [GET]
+  [4;35;1mTheme Load (4.0ms)[0m   [0mSELECT * FROM "themes" [0m
+Rendering template within layouts/application
+Rendering themes/index
+Completed in 19ms (View: 4, DB: 7) | 200 OK [http://stargazer/themes]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#new (for 127.0.0.1 at 2009-05-11 21:36:31) [GET]
+Rendering template within layouts/application
+Rendering themes/new
+Rendered themes/_form (5.0ms)
+Completed in 37ms (View: 19, DB: 3) | 200 OK [http://stargazer/themes/new]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#create (for 127.0.0.1 at 2009-05-11 21:36:50) [POST]
+  Parameters: {"commit"=>"Record", "theme"=>{"name"=>"Mourning", "description"=>"What kind of mourning is described?"}, "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M="}
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mINSERT INTO "themes" ("name", "updated_at", "description", "created_at") VALUES(E'Mourning', '2009-05-11 19:36:50.645000', E'What kind of mourning is described?', '2009-05-11 19:36:50.645000') RETURNING "id"[0m
+  [4;36;1mSQL (25.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://stargazer:3000/themes/1
+Completed in 64ms (DB: 32) | 302 Found [http://stargazer/themes]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#show (for 127.0.0.1 at 2009-05-11 21:36:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTheme Load (3.0ms)[0m   [0;1mSELECT * FROM "themes" WHERE ("themes"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering themes/show
+Completed in 32ms (View: 11, DB: 5) | 200 OK [http://stargazer/themes/1]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#index (for 127.0.0.1 at 2009-05-11 21:36:54) [GET]
+  [4;36;1mTheme Load (4.0ms)[0m   [0;1mSELECT * FROM "themes" [0m
+Rendering template within layouts/application
+Rendering themes/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47themes47index46html46erb at D:/ruby18/www/ssa/app/views/themes/index.html.erb:10)
+Completed in 29ms (View: 15, DB: 7) | 200 OK [http://stargazer/themes]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:36:56) [GET]
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 32ms (View: 18, DB: 6) | 200 OK [http://stargazer/topics]
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#index (for 127.0.0.1 at 2009-05-11 21:36:58) [GET]
+  [4;36;1mTheme Load (4.0ms)[0m   [0;1mSELECT * FROM "themes" [0m
+Rendering template within layouts/application
+Rendering themes/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47themes47index46html46erb at D:/ruby18/www/ssa/app/views/themes/index.html.erb:10)
+Completed in 29ms (View: 16, DB: 8) | 200 OK [http://stargazer/themes]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#new (for 127.0.0.1 at 2009-05-11 21:42:16) [GET]
+Rendering template within layouts/application
+Rendering themes/new
+Rendered themes/_form (2.0ms)
+Completed in 26ms (View: 9, DB: 3) | 200 OK [http://stargazer/themes/new]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#create (for 127.0.0.1 at 2009-05-11 21:42:37) [POST]
+  Parameters: {"commit"=>"Record", "theme"=>{"name"=>"Leadership", "description"=>"What kind of leadership is described?"}, "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M="}
+  [4;35;1mSQL (3.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mINSERT INTO "themes" ("name", "updated_at", "description", "created_at") VALUES(E'Leadership', '2009-05-11 19:42:37.771000', E'What kind of leadership is described?', '2009-05-11 19:42:37.771000') RETURNING "id"[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://stargazer:3000/themes/2
+Completed in 172ms (DB: 56) | 302 Found [http://stargazer/themes]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ThemesController#show (for 127.0.0.1 at 2009-05-11 21:42:37) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" WHERE ("themes"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering themes/show
+Completed in 27ms (View: 6, DB: 6) | 200 OK [http://stargazer/themes/2]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:42:41) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 32ms (View: 17, DB: 6) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:42:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template topics/edit.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:43:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+Rendered topics/_form (2.0ms)
+Completed in 41ms (View: 20, DB: 6) | 200 OK [http://stargazer/topics/1/edit]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 21:43:39) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages"}, "id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://stargazer:3000/topics/1
+Completed in 30ms (DB: 10) | 302 Found [http://stargazer/topics/1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:43:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 28ms (View: 6, DB: 7) | 200 OK [http://stargazer/topics/1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:43:41) [GET]
+  [4;35;1mTopic Load (5.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 31ms (View: 18, DB: 8) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:43:44) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 26ms (View: 5, DB: 6) | 200 OK [http://stargazer/topics/2]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 21:43:46) [GET]
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 32ms (View: 18, DB: 7) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#show (for 127.0.0.1 at 2009-05-11 21:43:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/show
+Completed in 28ms (View: 5, DB: 6) | 200 OK [http://stargazer/topics/1]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:44:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+Rendered topics/_form (2.0ms)
+Completed in 30ms (View: 9, DB: 6) | 200 OK [http://stargazer/topics/1/edit]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:45:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;36;1mSQL (0.0ms)[0m   [0;1mRuntimeError: ERROR	C42P01	Mrelation "themes_topics" does not exist	F.\src\backend\catalog\namespace.c	L273	RRangeVarGetRelid: SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = 'themes_topics'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+
+ActionView::TemplateError (RuntimeError: ERROR	C42P01	Mrelation "themes_topics" does not exist	F.\src\backend\catalog\namespace.c	L273	RRangeVarGetRelid:             SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+              FROM pg_attribute a LEFT JOIN pg_attrdef d
+                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+             WHERE a.attrelid = 'themes_topics'::regclass
+               AND a.attnum > 0 AND NOT a.attisdropped
+             ORDER BY a.attnum
+) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= f.select :themes, {:value1 => 3, :value4 => 4} %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (217.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:50:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+
+ActionView::TemplateError (Could not find the association :topics_themes in model Topic) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= f.select :themes, {:value1 => 3, :value4 => 4} %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (204.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+Migrating to RenameAssocTables (20090511195345)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (56.0ms)[0m   [0mALTER TABLE "topics_themes" RENAME TO "themes_topics"[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mALTER TABLE "themes_references" RENAME TO "references_themes"[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511195345')[0m
+  [4;36;1mSQL (88.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:55:15) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (4.0ms)[0m   [0mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (19.0ms)
+Completed in 47ms (View: 21, DB: 10) | 200 OK [http://stargazer/topics/1/edit]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 21:55:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;36;1mTheme Load (5.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (21.0ms)
+Completed in 53ms (View: 27, DB: 11) | 200 OK [http://stargazer/topics/1/edit]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:08:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= f.select :themes %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12:in `select'
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (196.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:10:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (40.0ms)[0m   [0mSELECT * FROM "themes" [0m
+
+ActionView::TemplateError (undefined method `merge' for [["Mourning", 1], ["Leadership", 2]]:Array) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= f.select 'topic', 'theme_id', Theme.all.collect {|t| [t.name, t.id]}, {:mutiple => true} %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (195.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:12:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;36;1mTheme Load (3.0ms)[0m   [0;1mSELECT * FROM "themes" [0m
+
+ActionView::TemplateError (undefined method `merge' for [["Mourning", 1], ["Leadership", 2]]:Array) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= f.select 'topic', 'theme_id', Theme.all.collect {|t| [t.name, t.id]} %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (107.0ms)
+Rendered rescues/_request_and_response (86.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (26.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+Migrating to RenameAssocTables (20090511195345)
+Migrating to RemovePksFromAssocTables (20090511201607)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (119.0ms)[0m   [0mDROP TABLE "themes_topics"[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mDROP TABLE "references_themes"[0m
+  [4;35;1mSQL (177.0ms)[0m   [0mCREATE TABLE "themes_topics" ("topic_id" int, "theme_id" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mRuntimeError: ERROR	C42P01	Mrelation "themes_topic" does not exist	F.\src\backend\catalog\namespace.c	L273	RRangeVarGetRelid: CREATE UNIQUE INDEX "index_themes_topic_on_topic_id_and_theme_id" ON "themes_topic" ("topic_id", "theme_id")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+Migrating to RenameAssocTables (20090511195345)
+Migrating to RemovePksFromAssocTables (20090511201607)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (5.0ms)[0m   [0mDROP TABLE "themes_topics"[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mDROP TABLE "references_themes"[0m
+  [4;35;1mSQL (8.0ms)[0m   [0mCREATE TABLE "themes_topics" ("topic_id" int, "theme_id" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (48.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_themes_topics_on_topic_id_and_theme_id" ON "themes_topics" ("topic_id", "theme_id")[0m
+  [4;35;1mSQL (8.0ms)[0m   [0mCREATE TABLE "references_themes" ("theme_id" int, "reference_id" int, "quality" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mRuntimeError: ERROR	C42P01	Mrelation "themes_references" does not exist	F.\src\backend\catalog\namespace.c	L273	RRangeVarGetRelid: CREATE INDEX "index_themes_references_on_theme_id" ON "themes_references" ("theme_id")[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+Migrating to RenameAssocTables (20090511195345)
+Migrating to RemovePksFromAssocTables (20090511201607)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mDROP TABLE "themes_topics"[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mDROP TABLE "references_themes"[0m
+  [4;35;1mSQL (9.0ms)[0m   [0mCREATE TABLE "themes_topics" ("topic_id" int, "theme_id" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_themes_topics_on_topic_id_and_theme_id" ON "themes_topics" ("topic_id", "theme_id")[0m
+  [4;35;1mSQL (8.0ms)[0m   [0mCREATE TABLE "references_themes" ("theme_id" int, "reference_id" int, "quality" int, "notes" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (34.0ms)[0m   [0;1mCREATE INDEX "index_references_themes_on_theme_id" ON "references_themes" ("theme_id")[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mCREATE INDEX "index_references_themes_on_reference_id" ON "references_themes" ("reference_id")[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090511201607')[0m
+  [4;35;1mSQL (54.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:25:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (34.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" [0m
+
+ActionView::TemplateError (undefined method `merge' for [["Mourning", 1], ["Leadership", 2]]:Array) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= f.select 'topic', 'theme_id', Theme.all.collect {|t| [t.name, t.id]} %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (107.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:31:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTopic Load (12.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;36;1mTheme Load (16.0ms)[0m   [0;1mSELECT * FROM "themes" [0m
+
+ActionView::TemplateError (undefined method `theme_id' for #<Topic:0x9358258>) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= select 'topic', 'theme_id', Theme.all.collect {|t| [t.name, t.id]} %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (202.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mTheme Load (37.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (145.0ms)[0m   [0mINSERT INTO "themes_topics" ("topic_id", "updated_at", "theme_id", "created_at") VALUES (1, '2009-05-11 19:36:50.645000', 1, '2009-05-11 19:36:50.645000')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO "themes_topics" ("topic_id", "updated_at", "theme_id", "created_at") VALUES (1, '2009-05-11 19:42:37.771000', 2, '2009-05-11 19:42:37.771000')[0m
+  [4;35;1mSQL (38.0ms)[0m   [0mCOMMIT[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:41:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+
+ActionView::TemplateError (wrong number of arguments (2 for 3)) on line #12 of app/views/topics/_form.html.erb:
+9:   </p>
+10:   <p>
+11:     <%= f.label :themes %><br />
+12:     <%= select 'topic', 'themes' %>
+13:   </p>
+14:   <p>
+15:     <%= f.submit label_text %>
+
+    app/views/topics/_form.html.erb:12:in `select'
+    app/views/topics/_form.html.erb:12
+    app/views/topics/edit.html.erb:4
+    app/views/topics/edit.html.erb:3
+
+Rendered rescues/_trace (103.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:41:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (4.0ms)[0m   [0mSELECT * FROM "themes" [0m
+  [4;36;1mTheme Load (4.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (81.0ms)
+Completed in 115ms (View: 84, DB: 13) | 200 OK [http://stargazer/topics/1/edit]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:42:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" [0m
+  [4;36;1mTheme Load (5.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (141.0ms)
+Completed in 175ms (View: 144, DB: 15) | 200 OK [http://stargazer/topics/1/edit]
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:43:21) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" [0m
+  [4;36;1mTheme Load (4.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (32.0ms)
+Completed in 64ms (View: 35, DB: 14) | 200 OK [http://stargazer/topics/1/edit]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:50:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" [0m
+  [4;36;1mTheme Load (57.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (124.0ms)
+Completed in 187ms (View: 76, DB: 67) | 200 OK [http://stargazer/topics/1/edit]
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 22:50:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;35;1mTheme Load (4.0ms)[0m   [0mSELECT * FROM "themes" [0m
+  [4;36;1mTheme Load (5.0ms)[0m   [0;1mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 1 ) [0m
+Rendered topics/_form (56.0ms)
+Completed in 126ms (View: 75, DB: 15) | 200 OK [http://stargazer/topics/1/edit]
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 22:51:02) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+ActiveRecord::AssociationTypeMismatch (Theme(#77414430) expected, got String(#29520920)):
+  app/controllers/topics_controller.rb:30:in `update'
+
+Rendered rescues/_trace (303.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 22:52:53) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+ActiveRecord::AssociationTypeMismatch (Theme(#78086880) expected, got String(#29520920)):
+  app/controllers/topics_controller.rb:31:in `update'
+
+Rendered rescues/_trace (81.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 22:57:08) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+ActiveRecord::AssociationTypeMismatch (Theme(#77524370) expected, got String(#29520920)):
+  app/controllers/topics_controller.rb:36:in `update'
+
+Rendered rescues/_trace (299.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 22:57:18) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;36;1mTopic Load (3.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+NoMethodError (undefined method `each_index' for "1":String):
+  app/controllers/topics_controller.rb:31:in `update'
+
+Rendered rescues/_trace (89.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:00:28) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mTheme Load (3.0ms)[0m   [0mSELECT * FROM "themes" WHERE ("themes"."id" = 1) [0m
+
+NoMethodError (undefined method `each' for #<Theme:0x94019c0>):
+  app/controllers/topics_controller.rb:38:in `update'
+
+Rendered rescues/_trace (190.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:01:04) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+NoMethodError (undefined method `dump' for #<TopicsController:0x952d59c>):
+  app/controllers/topics_controller.rb:30:in `update'
+
+Rendered rescues/_trace (84.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:01:19) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+NoMethodError (undefined method `dump' for #<HashWithIndifferentAccess:0x943e71c>):
+  app/controllers/topics_controller.rb:30:in `update'
+
+Rendered rescues/_trace (69.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:01:40) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (5.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+Errno::ENOENT (No such file or directory - D:/ruby18/www/ssa/app/views/topics/update.html.erb):
+  
+
+Rendered rescues/_trace (85.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:01:57) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+SystemExit (exit):
+  app/controllers/topics_controller.rb:31:in `exit'
+  app/controllers/topics_controller.rb:31:in `update'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:05:02) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+NoMethodError (undefined method `debug' for #<TopicsController:0x934abd0>):
+  app/controllers/topics_controller.rb:30:in `update'
+
+Rendered rescues/_trace (70.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:07:50) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+NoMethodError (undefined method `run_init_script' for Debugger:Module):
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.2-x86-mswin32/lib/ruby-debug-base.rb:221:in `debugger'
+  app/controllers/topics_controller.rb:30:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (98.0ms)
+Rendered rescues/_request_and_response (4.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:08:30) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"War", "description"=>"Study of War passages", "themes"=>"1"}, "id"=>"1"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+
+NoMethodError (undefined method `run_init_script' for Debugger:Module):
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.2-x86-mswin32/lib/ruby-debug-base.rb:221:in `debugger'
+  app/controllers/topics_controller.rb:30:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (98.0ms)
+Rendered rescues/_request_and_response (4.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2009-05-11 23:08:42) [GET]
+  [4;35;1mTopic Load (5.0ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+DEPRECATION WARNING: truncate takes an option hash instead of separate length and omission arguments. (called from _run_erb_app47views47topics47index46html46erb at D:/ruby18/www/ssa/app/views/topics/index.html.erb:10)
+Completed in 125ms (View: 109, DB: 9) | 200 OK [http://stargazer/topics]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#edit (for 127.0.0.1 at 2009-05-11 23:08:46) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering topics/edit
+  [4;36;1mTheme Load (4.0ms)[0m   [0;1mSELECT * FROM "themes" [0m
+  [4;35;1mTheme Load (5.0ms)[0m   [0mSELECT * FROM "themes" INNER JOIN "themes_topics" ON "themes".id = "themes_topics".theme_id WHERE ("themes_topics".topic_id = 2 ) [0m
+Rendered topics/_form (127.0ms)
+Completed in 172ms (View: 136, DB: 16) | 200 OK [http://stargazer/topics/2/edit]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:08:49) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;35;1mTopic Load (3.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+
+NoMethodError (undefined method `run_init_script' for Debugger:Module):
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.2-x86-mswin32/lib/ruby-debug-base.rb:221:in `debugger'
+  app/controllers/topics_controller.rb:30:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (94.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:09:01) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;35;1mTopic Load (4.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+  [4;36;1mTheme Load (3.0ms)[0m   [0;1mSELECT * FROM "themes" WHERE ("themes"."id" = 1) [0m
+
+NoMethodError (undefined method `each' for #<Theme:0x716a5ec>):
+  app/controllers/topics_controller.rb:38:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (202.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:09:13) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+
+ActiveRecord::AssociationTypeMismatch (Theme(#60481900) expected, got String(#30012440)):
+  app/controllers/topics_controller.rb:31:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (106.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:09:23) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+
+ActiveRecord::AssociationTypeMismatch (Theme(#59396720) expected, got String(#30012440)):
+  app/controllers/topics_controller.rb:31:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (208.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (103.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+Migrating to RenameAssocTables (20090511195345)
+Migrating to RemovePksFromAssocTables (20090511201607)
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:11:23) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+
+ActiveRecord::AssociationTypeMismatch (Theme(#60292560) expected, got String(#30012440)):
+  app/controllers/topics_controller.rb:31:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (112.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:11:33) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;36;1mTopic Load (4.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+
+NoMethodError (undefined method `run_init_script' for Debugger:Module):
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.2-x86-mswin32/lib/ruby-debug-base.rb:221:in `debugger'
+  app/controllers/topics_controller.rb:30:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (205.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (2.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (3.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing TopicsController#update (for 127.0.0.1 at 2009-05-11 23:16:02) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"F9lhZ+catSt8Bs6FCKVJaMUH5YFH2mfV2NzfiStaH8M=", "topic"=>{"name"=>"Charity", "description"=>"Charity in the scriptures", "themes"=>"1"}, "id"=>"2"}
+  [4;36;1mTopic Load (5.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 2) [0m
+
+NoMethodError (undefined method `run_init_script' for Debugger:Module):
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-base-0.10.2-x86-mswin32/lib/ruby-debug-base.rb:221:in `debugger'
+  app/controllers/topics_controller.rb:30:in `update'
+  /script\server:3
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `debug_load'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/lib/ruby-debug.rb:96:in `main'
+  D:/ruby18/lib/ruby/gems/1.8/gems/ruby-debug-ide-0.3.1/bin/rdebug-ide:76
+  D:/ruby18/bin/rdebug-ide:19:in `load'
+  D:/ruby18/bin/rdebug-ide:19
+
+Rendered rescues/_trace (99.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)

@@ -1,0 +1,7 @@
+<h1>Edit Theme</h1>
+
+<% form_for(@theme) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f, :label_text => "Update"} %>
+<% end %>
+
+<%= link_to 'Back', themes_path %>

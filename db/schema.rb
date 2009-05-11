@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090511172101) do
+ActiveRecord::Schema.define(:version => 20090511201607) do
 
   create_table "references", :force => true do |t|
     t.string   "ref"
@@ -18,14 +18,7 @@ ActiveRecord::Schema.define(:version => 20090511172101) do
     t.datetime "updated_at"
   end
 
-  create_table "themes", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "themes_references", :force => true do |t|
+  create_table "references_themes", :id => false, :force => true do |t|
     t.integer  "theme_id"
     t.integer  "reference_id"
     t.integer  "quality"
@@ -34,20 +27,29 @@ ActiveRecord::Schema.define(:version => 20090511172101) do
     t.datetime "updated_at"
   end
 
-  add_index "themes_references", ["reference_id"], :name => "index_themes_references_on_reference_id"
-  add_index "themes_references", ["theme_id"], :name => "index_themes_references_on_theme_id"
+  add_index "references_themes", ["reference_id"], :name => "index_references_themes_on_reference_id"
+  add_index "references_themes", ["theme_id"], :name => "index_references_themes_on_theme_id"
 
-  create_table "topics", :force => true do |t|
+  create_table "themes", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "topics_themes", :force => true do |t|
+  create_table "themes_topics", :id => false, :force => true do |t|
     t.integer  "topic_id"
     t.integer  "theme_id"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "themes_topics", ["theme_id", "topic_id"], :name => "index_themes_topics_on_topic_id_and_theme_id", :unique => true
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
