@@ -47,3 +47,12 @@ Migrating to CreateTopicsThemes (20090511172101)
   [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090511172101')[0m
   [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
   [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTopics (20090511164241)
+Migrating to CreateThemes (20090511171151)
+Migrating to CreateReferences (20090511171337)
+Migrating to CreateThemesReferences (20090511171840)
+Migrating to CreateTopicsThemes (20090511172101)
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
