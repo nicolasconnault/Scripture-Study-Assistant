@@ -11,6 +11,22 @@
 
 ActiveRecord::Schema.define(:version => 20090511201607) do
 
+  create_table "books", :force => true do |t|
+    t.string  "name",      :limit => 64, :null => false
+    t.integer "volume_id", :limit => 2,  :null => false
+  end
+
+  add_index "books", ["volume_id"], :name => "volume_id"
+
+  create_table "chapters", :force => true do |t|
+    t.integer "book_id", :limit => 2, :null => false
+    t.text    "heading",              :null => false
+    t.integer "number",  :limit => 2, :null => false
+  end
+
+  add_index "chapters", ["book_id", "number"], :name => "chapters_ibfk_1", :unique => true
+  add_index "chapters", ["book_id"], :name => "book_id"
+
   create_table "references", :force => true do |t|
     t.string   "ref"
     t.text     "content"
@@ -52,6 +68,18 @@ ActiveRecord::Schema.define(:version => 20090511201607) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "verses", :force => true do |t|
+    t.integer "chapter_id", :limit => 2, :null => false
+    t.text    "body",                    :null => false
+    t.integer "number",     :limit => 2, :null => false
+  end
+
+  add_index "verses", ["chapter_id"], :name => "chapter_id"
+
+  create_table "volumes", :force => true do |t|
+    t.string "name", :limit => 64, :default => "", :null => false
   end
 
 end
