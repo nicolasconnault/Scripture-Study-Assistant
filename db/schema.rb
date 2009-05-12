@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090511201607) do
+ActiveRecord::Schema.define(:version => 20090512214413) do
 
   create_table "books", :force => true do |t|
     t.string  "name",      :limit => 64, :null => false
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20090511201607) do
   end
 
   add_index "chapters", ["book_id", "number"], :name => "chapters_ibfk_1", :unique => true
-  add_index "chapters", ["book_id"], :name => "book_id"
 
   create_table "references", :force => true do |t|
     t.string   "ref"

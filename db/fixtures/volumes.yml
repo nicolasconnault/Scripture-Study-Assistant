@@ -1,0 +1,16 @@
+--- 
+volumes_001: 
+  name: Pearl of Great Price
+  id: "1"
+volumes_002: 
+  name: Book of Mormon
+  id: "2"
+volumes_003: 
+  name: Doctrine & Covenants
+  id: "3"
+volumes_004: 
+  name: New Testament
+  id: "4"
+volumes_005: 
+  name: Old Testament
+  id: "5"
