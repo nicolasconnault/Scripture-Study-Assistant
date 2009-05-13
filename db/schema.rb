@@ -9,11 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090512214413) do
+ActiveRecord::Schema.define(:version => 20090513045657) do
 
   create_table "books", :force => true do |t|
-    t.string  "name",      :limit => 64, :null => false
-    t.integer "volume_id", :limit => 2,  :null => false
+    t.string  "name",          :limit => 64, :null => false
+    t.integer "volume_id",     :limit => 2,  :null => false
+    t.string  "abbreviations"
   end
 
   add_index "books", ["volume_id"], :name => "volume_id"
