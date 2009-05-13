@@ -5,10 +5,10 @@ class Book < ActiveRecord::Base
   has_many :chapters
 
   def self.find_by_abbr(abbr)
-    if book = self.find_by_name(abbr)
+    if book = Book.find(:first, :conditions => ["LOWER(name) LIKE ?", abbr.downcase ])
       book
     else
-      Book.find(:all, :conditions => { :abbreviations => /#{abbr.downcase}/ }).first
+      Book.find(:all, :conditions => { :abbreviations => /#{abbr.downcase.chomp('.')}/ }).first
     end
   end
 end

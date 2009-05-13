@@ -1,7 +1,31 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+verses_30340: 
+  number: "29"
+  body: "29 Rejoice not thou, whole Palestina, because the rod of him that smote thee is broken: for out of the serpent's root shall come forth a cockatrice, and his fruit shall be a fiery flying serpent."
+  chapter_id: "1076"
+  id: "30340"
+verses_30341: 
+  number: "30"
+  body: "30 And the firstborn of the poor shall feed, and the needy shall lie down in safety: and I will kill thy root with famine, and he shall slay thy remnant."
+  chapter_id: "1076"
+  id: "30341"
+verses_30342: 
+  number: "31"
+  body: "31 Howl, O gate; cry, O city; thou, whole Palestina, art dissolved: for there shall come from the north a smoke, and none shall be alone in his appointed times."
+  chapter_id: "1076"
+  id: "30342"
+verses_30343: 
+  number: "32"
+  body: 32 What shall one then answer the messengers of the nation ? That the LORD hath founded Zion, and the poor of his people shall trust in it.
+  chapter_id: "1076"
+  id: "30343"
+verses_3420: 
+  number: "18"
+  body: "18 Now when the king had heard these words, he marveled again, for he beheld that Ammon could discern his thoughts; but notwithstanding this, king Lamoni did open his mouth, and said unto him: Who art thou? Art thou that Great Spirit, who knows all things?"
+  chapter_id: "120"
+  id: "3420"
+verses_3421: 
+  number: "19"
+  body: "19 Ammon answered and said unto him: I am not."
+  chapter_id: "120"
+  id: "3421"

@@ -1,7 +1,68 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+chapters_1076: 
+  number: "14"
+  id: "1076"
+  heading: " "
+  book_id: "66"
+chapters_936: 
+  number: "1"
+  id: "936"
+  heading: Ezekiel sees in vision four living creatures, four wheels, and the glory of God on his throne.
+  book_id: "60"
+chapters_804: 
+  number: "10"
+  id: "804"
+  heading: David's messengers are abused by Ammonites. Israel defeats Ammonites and Syrians.
+  book_id: "53"
+chapters_250: 
+  number: "27"
+  id: "251"
+  heading: Mosiah forbids persecution and enjoins equality. Alma the younger and the four sons of Mosiah seek to destroy the Church. An angel appears and commands them to cease their evil course. Alma is struck dumb. All mankind must be born again to gain salvation. Alma and the sons of Mosiah declare glad tidings. [Probably between 100 and 92B.C. ]
+  book_id: "18"
+chapters_382: 
+  number: "127"
+  id: "382"
+  heading: " "
+  book_id: "21"
+chapters_119: 
+  number: "18"
+  id: "120"
+  heading: King Lamoni supposes that Ammon is the Great Spirit. Ammon teaches the king of the creation, of God's dealings with men, and of the redemption that comes through Christ. Lamoni believes and falls to the earth as if dead. [About 90B.C. ]
+  book_id: "10"
+chapters_1077: 
+  number: "15"
+  id: "1077"
+  heading: Moab shall be laid waste and her people shall howl and weep.
+  book_id: "66"
+chapters_937: 
+  number: "2"
+  id: "937"
+  heading: Ezekiel is called to take the word of the Lord to Israel. He sees a book in which lamentations and mourning are written.
+  book_id: "60"
+chapters_805: 
+  number: "11"
+  id: "805"
+  heading: David lies with Bath-sheba and she conceives. He then arranges for the death in battle of her husband Uriah.
+  book_id: "53"
+chapters_251: 
+  number: "28"
+  id: "252"
+  heading: !binary |
+    KlZlcnNlIDHDg+KAmsOCwqDDg+KAmsOCwqBbQWJvdXQgOTJCLkMuIF0u
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+  book_id: "18"
+chapters_383: 
+  number: "128"
+  id: "383"
+  heading: "An epistle from Joseph Smith the Prophet to The Church of Jesus Christ of Latter-day Saints, containing further directions on baptism for the dead; dated at Nauvoo, Illinois, September 6, 1842. HC 5: 148. 153."
+  book_id: "21"
+chapters_1078: 
+  number: "16"
+  id: "1078"
+  heading: Moab is condemned and her people shall sorrow. Messiah shall sit on David's throne, seeking judgment and hasting righteousness.
+  book_id: "66"
+chapters_938: 
+  number: "3"
+  id: "938"
+  heading: Ezekiel made a watchman unto the house of Israel. Their blood is required at his hand unless he raises the warning voice.
+  book_id: "60"
